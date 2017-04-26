@@ -7,6 +7,7 @@ function onReady() {
 }
 
 function calcInputs() {
+  console.log('calc button');
   var inputOne = $('#inputOne').val();
   var inputTwo = $('#inputTwo').val();
   var operator = $('.operators').val();
@@ -23,13 +24,18 @@ function calcInputs() {
     data: objectToSend,
     success: function( response ) {
       console.log(response);
-      $('.answerDiv').text('Result: ' + respObj.answer);
+      display(response);
     }
   });
+}
+
+function display(respObj) {
+  console.log('display' + respObj);
+  $('#answerDiv').text('Result: ' + respObj.answer);
 }
 
 function clearFunc() {
   $('#inputOne').val('');
   $('#inputTwo').val('');
-  $('.answerDiv').empty();
+  $('#answerDiv').empty();
 }
